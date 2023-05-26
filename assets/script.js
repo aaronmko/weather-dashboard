@@ -76,7 +76,7 @@ function displayWeather(cityName) {
                     cityList +
                     `<button class="btn btn-secondary my-2" type="submit">${searchHistory[i]}</button>`;
             }
-            pastSearchedCitiesEl.innerHTML = cityList;
+            pastSearchedCities.innerHTML = cityList;
             var myDashTwo = document.querySelectorAll(".my-2");
             for (var i = 0; i < myDashTwo.length; i++) {
                 myDashTwo[i].addEventListener("click", function () {
@@ -86,3 +86,14 @@ function displayWeather(cityName) {
         }
         displayCity();
 }
+searchForm.addEventListener("submit", dashboard); 
+
+function clearSearchHistory() {
+    localStorage.clear();
+    pastSearchedCities.innerHTML = "";
+    searchHistory = [];
+}
+// clears local storage
+clearButton.addEventListener("click", function () {
+    clearSearchHistory();
+});
