@@ -12,3 +12,23 @@ function dashboard(event) {
     var cityName = cityInput.value;
     displayWeather(cityName);
 }
+
+// grab api from openweathermap
+function displayWeather(cityName) {
+    var url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=9dd332c2cdf5ad3eee158912aa75b747&units=imperial`;
+    fetch(url)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (currentData) {
+            console.log(currentData);
+            var oneCallUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${currentData.coord.lat}&lon=${currentData.coord.lon}&appid=9dd332c2cdf5ad3eee158912aa75b747&units=imperial`;
+            fetch(oneCallUrl)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (fiveDayData) {
+                    if (searchHistory.includes(currentData.name) === false) {
+                        searchHistory.push(currentData.name);
+                        localStorage.setItem("city", JSON.stringify(searchHistory));
+                    }
