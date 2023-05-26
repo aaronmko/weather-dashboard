@@ -47,3 +47,42 @@ function displayWeather(cityName) {
         <li>Humidity: ${currentData.main.humidity}</li>
         <li>UV: <span style="background-color: green; color: white;"> ${fiveDayData.current.uvi
                         }</span></li>
+                        `;
+                    var cards = "";
+                    for (var i = 1; i < 6; i++) {
+                        cards =
+                            cards +
+                            `<ul class="col-12 col-xl-2 day">
+        <li>${moment(fiveDayData.daily[i].dt, "X").format(" MM/DD/YYYY")}</li>
+        <li><img src ="http://openweathermap.org/img/wn/${fiveDayData.daily[i].weather[0].icon
+                            }@2x.png" /></li>
+        <li>Temp: ${fiveDayData.daily[i].temp.day}</li>
+        <li>Wind: ${fiveDayData.daily[i].wind_speed}</li>
+        <li>Humidity: ${fiveDayData.daily[i].humidity}</li>
+    </ul>`;
+                    }
+                    fiveDayForecast.innerHTML = cards;
+                });
+        });
+
+    // function displayCity
+        function displayCity() {
+            if (localStorage.getItem("city")) {
+                searchHistory = JSON.parse(localStorage.getItem("city"));
+            }
+            var cityList = "";
+            for (var i = 0; i < searchHistory.length; i++) {
+                cityList =
+                    cityList +
+                    `<button class="btn btn-secondary my-2" type="submit">${searchHistory[i]}</button>`;
+            }
+            pastSearchedCitiesEl.innerHTML = cityList;
+            var myDashTwo = document.querySelectorAll(".my-2");
+            for (var i = 0; i < myDashTwo.length; i++) {
+                myDashTwo[i].addEventListener("click", function () {
+                    displayWeather(this.textContent);
+                });
+            }
+        }
+        displayCity();
+}
