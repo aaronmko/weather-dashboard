@@ -21,7 +21,7 @@ The follow image shows the applications appearance and functionality:
 ![Alt text](/assets/images/06-server-side-apis-homework-demo.png)
 
 Here is a link of my deployed application:
-
+https://aaronmko.github.io/weather-dashboard/
 
 ## Submission
 
