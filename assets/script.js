@@ -45,10 +45,8 @@ function displayWeather(cityName) {
         <li>Temp: ${currentData.main.temp}</li>
         <li>Wind: ${currentData.wind.speed}</li>
         <li>Humidity: ${currentData.main.humidity}</li>
-        <li>UV: <span style="background-color: green; color: white;"> ${fiveDayData.current.uvi
-                        }</span></li>
-    </ul>
-        `;
+        <li>UV: <span style="background-color: green; color: white;"> ${fiveDayData.current.uvi}</span></li>
+                                                </ul>`;
                     var cards = "";
                     for (var i = 1; i < 6; i++) {
                         cards =
@@ -60,7 +58,7 @@ function displayWeather(cityName) {
         <li>Temp: ${fiveDayData.daily[i].temp.day}</li>
         <li>Wind: ${fiveDayData.daily[i].wind_speed}</li>
         <li>Humidity: ${fiveDayData.daily[i].humidity}</li>
-    </ul>`;
+                             </ul>`;
                     }
                     fiveDayForecast.innerHTML = cards;
                 });
